@@ -13,11 +13,23 @@ export class SectionContainerAndHandlerComponent {
 
 
   // dynamic ID setting
-  __currentID = 0;
-  setID(section: SectionComponent){
-    section.elements().id = this.__currentID;
-    this.__currentID++;
+  id = {
+    currentSelected: 0,
+    
+    setID: function(section: SectionComponent){
+      section.elements().id = this.currentSelected;
+      this.currentSelected++;
+    },
+
+    setAllID: function(components: SectionComponent[]){
+      this.currentSelected = 0;
+      components.forEach(sec => {
+        this.setID(sec);
+      })
+    },
   }
+
+  
 
   sectionComponents = viewChildren(SectionComponent);
   
@@ -31,12 +43,14 @@ export class SectionContainerAndHandlerComponent {
       }
       return r;
     },
+    newSection: function(event: MouseEvent){
+        this.count++
+    },
+    delete: function(id: number){
+      console.log("BALL");
+      this.components.find(element => {element.elements().id == id})?.changetext("FLASHDJKASHDKASHDKLASHDJKLHASJK");
+    }
   }
-
-
-  constructor(){
-    
-  };
 
   
 }

@@ -30,7 +30,7 @@ export class SectionComponent implements AfterContentInit {
   }
   
   changetext(text: string){
-    tsnt.gebi("section").textContent = text;
+    tsnt.gebi(this.elements().id.toString()).textContent = text;
   }
 
 

@@ -1,3 +1,8 @@
-@for (sec of sections.range(); track sec) {
-    <app-section />
-}
+<div id="sections-stack">
+    @for (sec of sections.range(); track sec) {
+        <app-section />
+    }
+    <div id="sections-control">
+        <div id="new-section-button" (click)="sections.delete(0)">New Section</div>
+    </div>
+</div>
