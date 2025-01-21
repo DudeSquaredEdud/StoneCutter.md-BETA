@@ -1,22 +1,48 @@
-div#sections-stack{
+div#sections-stack {
     margin-left: auto;
     margin-right: auto;
     width: calc(20% + 282px);
 }
 
-div#new-section-button{
-    
+div#sections-control {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+div#new-section-button, div#delete-section-button {
     background-color: rgb(123, 110, 165);
-    margin-left: auto;
-    margin-right: auto;
     height: 50px;
-    width: 30%;
-    text-align:center;
+    width: 45%;
+    text-align: center;
     place-content: center;
-    color:aliceblue;
+    color: aliceblue;
     border-radius: 20px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
 }
-div#new-section-button:hover{
-    cursor:pointer;
+
+div#new-section-button:hover, div#delete-section-button:hover {
+    background-color: rgb(143, 130, 185);
+}
+
+.section-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.section-wrapper button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.section-wrapper button:hover {
+    background-color: #ff1a1a;
 }

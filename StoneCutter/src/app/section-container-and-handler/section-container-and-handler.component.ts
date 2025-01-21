@@ -1,5 +1,4 @@
 import { Component, viewChildren } from '@angular/core';
-import { tsnt } from '../tsnt';
 import { SectionComponent } from '../section/section.component';
 
 @Component({
@@ -10,9 +9,7 @@ import { SectionComponent } from '../section/section.component';
 })
 export class SectionContainerAndHandlerComponent {
 
-
-
-  // dynamic ID setting
+  // Dynamic ID setting
   id = {
     currentSelected: 0,
     
@@ -25,37 +22,39 @@ export class SectionContainerAndHandlerComponent {
       this.currentSelected = 0;
       components.forEach(sec => {
         this.setID(sec);
-      })
+      });
     },
   }
 
-  
-
   sectionComponents = viewChildren(SectionComponent);
 
-  // next up:
-  // sections: give them their own delete button
-  // drag-to-rearrange sections
-  // footnote support
-  // 
-  
   sections = {
     count: 1,
     components: this.sectionComponents,
     range: function() {
       let r = [];
-      for (let i=0; i < this.count; i++){
+      for (let i = 0; i < this.count; i++) {
         r.push(i);
       }
       return r;
     },
-    newSection: function(event: MouseEvent){
-        this.count++
+    newSection: function(event: MouseEvent) {
+      this.count++;
     },
-    delete: function(id: number){
-      // Takes in the ID of a section and deletes it.
+    delete: (id: number) => { // Use an arrow function to preserve `this`
+      if (this.sections.count > 1) { // Ensure there's always at least one section
+        // Remove the section with the specified ID
+        this.sections.count--;
+        // Reassign IDs after deletion
+        const mutableComponents = [...this.sectionComponents()]; // Create a mutable copy
+        this.id.setAllID(mutableComponents);
+      }
     },
   }
 
-  
+  ngAfterViewInit(): void {
+    // Ensure IDs are set correctly after view initialization
+    const mutableComponents = [...this.sectionComponents()]; // Create a mutable copy
+    this.id.setAllID(mutableComponents);
+  }
 }
