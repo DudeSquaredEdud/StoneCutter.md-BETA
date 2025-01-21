@@ -1,11 +1,11 @@
 <div id="sections-stack">
-    @for (sec of sections.range(); track sec; let i = $index) {
+    @for (section of sections; track trackBySectionId($index, section)) {
         <div class="section-wrapper">
             <app-section />
-            <button (click)="sections.delete(i)">Delete Section</button>
+            <button (click)="deleteSection(section.id)">Delete Section</button>
         </div>
     }
     <div id="sections-control">
-        <div id="new-section-button" (click)="sections.newSection($event)">New Section</div>
+        <div id="new-section-button" (click)="newSection()">New Section</div>
     </div>
 </div>

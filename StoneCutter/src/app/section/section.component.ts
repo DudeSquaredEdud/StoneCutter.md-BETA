@@ -9,15 +9,12 @@ import { tsnt } from '../tsnt';
 })
 export class SectionComponent implements AfterContentInit {
   
-  elements(){
-    /**
-     * Javascript is Easy and fun
-     */
+  elements() {
     return {
-      title: tsnt.gebi("section-title"),
-      text:  tsnt.gebi("section-text"),
-      id: 0,
-    }
+      title: tsnt.gebi('section-title'),
+      text: tsnt.gebi('section-text'),
+      id: 0 // Will be updated by parent
+    };
   }
   
   selectAllTextInTitle(){
