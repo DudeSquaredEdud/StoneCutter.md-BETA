@@ -32,10 +32,16 @@ export class SectionContainerAndHandlerComponent {
   
 
   sectionComponents = viewChildren(SectionComponent);
+
+  // next up:
+  // sections: give them their own delete button
+  // drag-to-rearrange sections
+  // footnote support
+  // 
   
   sections = {
     count: 1,
-    components: this.sectionComponents(),
+    components: this.sectionComponents,
     range: function() {
       let r = [];
       for (let i=0; i < this.count; i++){
@@ -47,9 +53,8 @@ export class SectionContainerAndHandlerComponent {
         this.count++
     },
     delete: function(id: number){
-      console.log("BALL");
-      this.components.find(element => {element.elements().id == id})?.changetext("FLASHDJKASHDKASHDKLASHDJKLHASJK");
-    }
+      // Takes in the ID of a section and deletes it.
+    },
   }
 
   
