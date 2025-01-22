@@ -2,3 +2,42 @@
  body{
     margin: 0px;
  }
+
+
+/* Ensure the app container takes up the full viewport height */
+.app-container {
+   min-height: 100vh; /* Full viewport height */
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ /* Ensure the main content area takes up the remaining space */
+ .main {
+   flex: 1; /* Grow to fill available space */
+ }
+ 
+ /* Default Theme */
+ .default {
+   background: #f0f0f0;
+   color: #333;
+ }
+ 
+ /* Dark, Wavy Acidic Theme */
+ .dark-wavy-acidic {
+   background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+   background-size: 200% 200%;
+   animation: wave 60s infinite;
+   color: #eeeeee;
+ }
+ 
+ @keyframes wave {
+   0% {
+     background-position: 0% 50%;
+   }
+   50% {
+     background-position: 100% 50%;
+   }
+   100% {
+     background-position: 0% 50%;
+   }
+ }

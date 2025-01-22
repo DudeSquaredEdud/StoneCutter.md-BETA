@@ -1,0 +1,83 @@
+.export-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2d2d2d; /* Dark background */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    color: #eeeeee; /* Light text */
+    z-index: 1000; /* Ensure it's on top */
+    width: 300px; /* Fixed width */
+  }
+  
+  .export-menu h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #00ff00; /* Acidic green for the title */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555; /* Dark border */
+    border-radius: 5px; /* Rounded corners */
+    background: #1a1a1a; /* Dark input background */
+    color: #eeeeee; /* Light text */
+  }
+  
+  .markdown-preview {
+    margin-bottom: 15px;
+  }
+  
+  .markdown-preview label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .markdown-preview textarea {
+    width: 100%;
+    height: 150px;
+    padding: 8px;
+    border: 1px solid #555; /* Dark border */
+    border-radius: 5px; /* Rounded corners */
+    background: #1a1a1a; /* Dark textarea background */
+    color: #eeeeee; /* Light text */
+    resize: none; /* Disable resizing */
+  }
+  
+  .export-menu button {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding for better spacing */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    margin-right: 10px; /* Spacing between buttons */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+  }
+  
+  .export-menu button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  .export-menu button:last-child {
+    background-color: #6c757d; /* Gray for the close button */
+  }
+  
+  .export-menu button:last-child:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+  }

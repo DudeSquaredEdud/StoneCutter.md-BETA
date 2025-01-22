@@ -1,0 +1,19 @@
+.theme-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  label {
+    margin-right: 10px;
+    color: white;
+  }
+  
+  select {
+    padding: 5px;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+  }

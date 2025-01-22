@@ -1,3 +1,7 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 div#sections-stack {
     margin-left: auto;
     margin-right: auto;
@@ -34,15 +38,133 @@ div#new-section-button:hover, div#delete-section-button:hover {
 .section-wrapper button {
     position: absolute;
     top: 10px;
-    right: 10px;
-    background-color: #ff4d4d;
+    right: 20px;
+    background-color: #ff6969;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
     cursor: pointer;
 }
 
-.section-wrapper button:hover {
-    background-color: #ff1a1a;
+.big_X{
+  font-size: large;
 }
+
+.section-wrapper button:hover {
+    background-color: #ff5252;
+}
+
+#export-button {
+    background-color: rgb(94, 131, 164);
+    height: 50px;
+    width: 45%;
+    text-align: center;
+    place-content: center;
+    color: aliceblue;
+    border-radius: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+  }
+  
+  #export-button:hover {
+    background-color: rgb(103, 147, 186);/* Darker green on hover */
+  }
+
+  #git-push-button {
+    background-color: rgb(94, 164, 132);
+    height: 50px;
+    width: 45%;
+    text-align: center;
+    place-content: center;
+    color: aliceblue;
+    border-radius: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+  }
+  
+  #git-push-button:hover {
+    background-color: rgb(103, 186, 140)/* Darker green on hover */
+  }
+
+  #github-token-button {
+    background-color: rgb(115, 164, 94);
+    height: 50px;
+    width: 45%;
+    text-align: center;
+    place-content: center;
+    color: aliceblue;
+    border-radius: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+  }
+  
+  #github-token-button:hover {
+    background-color: rgb(137, 194, 112)
+  }
+
+  /* Git Push Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45vw;
+    color: #eeeeee;
+  }
+  
+  .modal h2 {
+    margin-top: 0;
+  }
+  
+  .modal .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .modal .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .modal .form-group input {
+    width: 100%;
+    padding: 8px;
+    padding-left: 0px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #1a1a1a;
+    color: #eeeeee;
+  }
+  
+  .modal button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .modal button:hover {
+    background-color: #218838;
+  }
+  
+  .modal button:last-child {
+    background-color: #6c757d;
+  }
+  
+  .modal button:last-child:hover {
+    background-color: #5a6268;
+  }

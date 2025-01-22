@@ -1,0 +1,16 @@
+<div class="export-menu">
+    <h2>Export to Markdown</h2>
+    <div class="form-group">
+      <label for="export-title">Title:</label>
+      <input id="export-title" [(ngModel)]="exportTitle" placeholder="Enter a title" />
+    </div>
+    <button (click)="generateMarkdown()">Generate Markdown</button>
+  
+    <div class="markdown-preview">
+      <label for="markdown-preview">Markdown Preview:</label>
+      <textarea id="markdown-preview" readonly>{{ markdownPreview }}</textarea>
+    </div>
+  
+    <button (click)="copyMarkdown()">Copy Markdown</button>
+    <button (click)="onClose()">Close</button>
+  </div>

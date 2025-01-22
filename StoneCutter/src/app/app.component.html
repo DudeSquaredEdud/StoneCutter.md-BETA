@@ -1,14 +1,11 @@
-<main class="main">
-<!-- Header -->
- <div id="page-header">
-  
- </div>
-  <!-- Collapsable settings bar on the left -->
-  <!-- Title in the center -->
-  <!-- Save/Export functions on the right -->
+<main class="main app-container " [ngClass]="currentTheme">
+  <!-- Header -->
+  <div id="page-header"></div>
 
-<!-- Editor -->
-  <!-- Footnotes (NOTE: INCLUDE FOOTNOTE WITH TEXT IN THE SECTION) -->
-  <app-section-container-and-handler />
+  <!-- Theme Menu -->
+  <app-theme-menu></app-theme-menu>
+
+  <!-- Editor -->
+  <app-section-container-and-handler></app-section-container-and-handler>
 </main>
-<router-outlet />
+<router-outlet></router-outlet>

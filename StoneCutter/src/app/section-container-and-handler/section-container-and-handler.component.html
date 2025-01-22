@@ -1,11 +1,53 @@
 <div id="sections-stack">
-    @for (section of sections; track trackBySectionId($index, section)) {
-        <div class="section-wrapper">
-            <app-section />
-            <button (click)="deleteSection(section.id)">Delete Section</button>
-        </div>
+    @for (section of sections; track section.id) {
+      <div class="section-wrapper">
+        <app-section />
+        <button (click)="deleteSection(section.id)" class="delete-button">✕</button>
+      </div>
     }
     <div id="sections-control">
-        <div id="new-section-button" (click)="newSection()">New Section</div>
+      <div id="new-section-button" (click)="newSection()">New Section</div>
+      <div id="export-button" (click)="openExportMenu()">Export to Markdown</div>
+      <div id="git-push-button" (click)="openGitPushModal()">Push to Git</div>
+    <div id="github-token-button" (click)="openTokenModal()">GitHub Token</div>
     </div>
-</div>
+  </div>
+  
+  <!-- Export Menu -->
+  @if (showExportMenu) {
+    <app-export-menu
+      [sections]="getSectionData()"
+      (closeMenu)="closeExportMenu()"
+    />
+  }
+  
+  <!-- Git Push Modal -->
+  @if (showGitPushModal) {
+    <div class="modal-overlay">
+      <div class="modal">
+        <h2>Push to Git</h2>
+        <div class="form-group">
+          <label for="repo-url">Repository URL:</label>
+          <input id="repo-url" [(ngModel)]="repoUrl" placeholder="https://github.com/username/repo.git" />
+        </div>
+        <div class="form-group">
+          <label for="branch">Branch:</label>
+          <input id="branch" [(ngModel)]="branch" placeholder="main" />
+        </div>
+        <div class="form-group">
+          <label for="commit-message">Commit Message:</label>
+          <input id="commit-message" [(ngModel)]="commitMessage" placeholder="Update content" />
+        </div>
+        <button (click)="pushToGit()">Push</button>
+        <button (click)="closeGitPushModal()">Close</button>
+      </div>
+    </div>
+  }
+  
+  <!-- GitHub Token Modal -->
+
+  @if (showTokenModal) {
+  <app-github-token-modal
+    (tokenSaved)="onTokenSaved($event)"
+  ></app-github-token-modal>
+  }

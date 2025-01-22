@@ -1,0 +1,18 @@
+<div class="modal-overlay">
+    <div class="modal">
+      <h2>GitHub Token</h2>
+      <form [formGroup]="tokenForm" (ngSubmit)="saveToken()">
+        <div class="form-group">
+          <label for="github-token">GitHub Token:</label>
+          <input
+            id="github-token"
+            type="text"
+            formControlName="token"
+            placeholder="Enter your GitHub token"
+          />
+        </div>
+        <button type="submit">Save</button>
+        <button type="button" (click)="closeModal()">Close</button>
+      </form>
+    </div>
+  </div>

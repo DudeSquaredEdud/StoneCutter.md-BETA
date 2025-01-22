@@ -1,0 +1,8 @@
+<div class="theme-menu">
+    <label for="theme-select">Select Theme:</label>
+    <select id="theme-select" (change)="changeTheme($event)">
+      @for (theme of themes; track theme) {
+        <option [value]="theme">{{ theme }}</option>
+      }
+    </select>
+  </div>
