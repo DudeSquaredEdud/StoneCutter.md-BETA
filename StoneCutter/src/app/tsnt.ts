@@ -15,6 +15,13 @@ export class tsnt {
         throw `Element ${identifier} not found or wrong type!`;
     }
 
+    static qebi<T extends HTMLElement>(query: string): T {
+        const element = document.querySelector(query);
+        console.log(element);
+        if (element) return element as T;
+        throw `Element ${query} not found or wrong type!`;
+    }
+
     /**
      * Safely get element by ID with a fallback element.
      * @param identifier - The ID of the element.

@@ -1,4 +1,4 @@
-import { Component, HostListener, AfterContentInit } from '@angular/core';
+import { Component, HostListener, AfterContentInit, Input } from '@angular/core';
 import { tsnt } from '../tsnt';
 
 @Component({
@@ -8,12 +8,25 @@ import { tsnt } from '../tsnt';
   styleUrl: './section.component.css'
 })
 export class SectionComponent implements AfterContentInit {
+
+  @Input() id = 0;
+
+  gdid = -1;
+
+  godDamnId() {
+    if (this.gdid == -1) {
+      this.gdid = this.id;
+    }
+    return this.gdid;
+  }
   
   elements() {
+    // I hate typescript
     return {
-      title: tsnt.gebi('section-title'),
-      text: tsnt.gebi('section-text'),
-      id: 0 // Will be updated by parent
+      id: this.godDamnId(), // MUST be updated by parent
+      title: document.querySelector(`#i${this.id} > div.section-header`)!,
+      text: document.querySelector(`#i${this.id} > div.section-text`)!,
+      
     };
   }
   
@@ -23,7 +36,10 @@ export class SectionComponent implements AfterContentInit {
   }
   
   ngAfterContentInit(): void {
-    this.elements().title.addEventListener("click", this.selectAllTextInTitle);
+    setTimeout(() => {
+      this.elements().title.addEventListener("click", this.selectAllTextInTitle)
+    }, 100);
+
   }
   
   changetext(text: string){

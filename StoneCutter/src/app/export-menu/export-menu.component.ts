@@ -18,9 +18,12 @@ export class ExportMenuComponent {
   // Generate Markdown from sections
   generateMarkdown(): void {
     let markdown = `# ${this.exportTitle}\n\n`; // Level-1 header for the title
-    this.sections.forEach((section, index) => {
-      markdown += `## ${section.title || `Section ${index + 1}`}\n\n`; // Level-2 header for each section
-      markdown += `${section.text}\n\n`; // Section text
+    document.querySelectorAll("div.section-container").forEach((section) => {
+      let id = section.getAttribute("id");
+      let title = section.querySelector(".section-header")?.textContent;
+      let text = section.querySelector(".section-body")?.textContent;
+      markdown += `## ${title || `Section ${id}`}\n\n`; // Level-2 header for each section
+      markdown += `${text}\n\n`; // Section text
     });
     this.markdownPreview = markdown;
   }

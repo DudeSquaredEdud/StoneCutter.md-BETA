@@ -1,7 +1,9 @@
+<p id="title" contenteditable="true">{{title}}</p>
+
 <div id="sections-stack">
     @for (section of sections; track section.id) {
       <div class="section-wrapper">
-        <app-section />
+        <app-section [id]="sections[sections.length -1].id" />
         <button (click)="deleteSection(section.id)" class="delete-button">✕</button>
       </div>
     }

@@ -46,6 +46,7 @@ pushToGit(repoUrl: string, branch: string, commitMessage: string, content: strin
           blogContent.slice(insertionPoint); // Content after the insertion point
 
         // Push the updated content back to the repository
+        console.log(updatedContent);
         return this.pushToGit(repoUrl, branch, commitMessage, updatedContent);
       }),
     );

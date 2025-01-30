@@ -17,8 +17,10 @@ import { tsnt } from '../tsnt';
 export class SectionContainerAndHandlerComponent {
   @ViewChildren(SectionComponent) sectionComponents!: QueryList<SectionComponent>;
 
-  sections: { id: number }[] = [{ id: 0 }];
-  private nextId = 1;
+  nextId = 0;
+  sections: { id: number }[] = [{ id: this.nextId }];
+
+  title: string = "New Post";
 
   showExportMenu = false;
   showGitPushModal = false; // Control visibility of the Git push modal
@@ -44,13 +46,21 @@ pushToGit(): void {
   const sectionData = this.getSectionData();
 
   // Combine all sections into a single Markdown string
-  const markdownContent = sectionData
-    .map((section) => `## ${section.title}\n\n${section.text}`)
-    .join('\n\n');
+  let markdownContent =  () => {
+    let markdown = `# ${document.querySelector("#title")?.textContent}\n\n`; // Level-1 header for the title
+    document.querySelectorAll("div.section-container").forEach((section) => {
+      let id = section.getAttribute("id");
+      let title = section.querySelector(".section-header")?.textContent;
+      let text = section.querySelector(".section-body")?.textContent;
+      markdown += `## ${title || `Section ${id}`}\n\n`; // Level-2 header for each section
+      markdown += `${text}\n\n`; // Section text
+    });
+    return markdown;
+  }
 
   // Push the combined Markdown content to GitHub
   this.gitService
-    .pushToGit(this.repoUrl, this.branch, this.commitMessage, markdownContent)
+    .appendToBlog(this.repoUrl, this.branch, this.commitMessage, markdownContent())
     .subscribe({
       next: (response) => {
         alert('Content pushed to Git successfully!');
@@ -74,11 +84,10 @@ showTokenModal = false;
   }
 
 // Get section data for export
-getSectionData(): { title: string; text: string }[] {
+  getSectionData(): { title: string; text: string }[] {
   return this.sectionComponents.map((section) => {
     const titleElement = section.elements().title;
     const textElement = section.elements().text;
-    tsnt.clog(section.elements().id);
 
     return {
       title: titleElement?.textContent || `Section ${section.elements().id + 1}`, // Fallback title
@@ -89,7 +98,8 @@ getSectionData(): { title: string; text: string }[] {
 
   // Add a new section
   newSection(): void {
-    this.sections = [...this.sections, { id: this.nextId++ }];
+    this.sections = [...this.sections, { id: ++this.nextId }];
+    console.log(this.sections);
   }
 
   // Delete a section by its unique ID
@@ -107,5 +117,9 @@ getSectionData(): { title: string; text: string }[] {
   // Close the export menu
   closeExportMenu(): void {
     this.showExportMenu = false;
+  }
+
+  getNextId(): number {
+    return this.nextId++;
   }
 }
